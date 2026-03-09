@@ -3,14 +3,31 @@
 
 @theme {
   --font-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
-  --color-primary: #10b981;
+  --color-primary: #00A859;
+  --color-secondary: #003366;
   --color-navy-dark: #0f172a;
   --color-navy-card: #1e293b;
 }
 
 @layer base {
+  :root {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-main: #f1f5f9;
+  }
+
+  .dark {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-main: #334155;
+  }
+
   body {
-    @apply bg-navy-dark text-slate-300 antialiased font-sans;
+    @apply bg-[var(--bg-main)] text-[var(--text-main)] antialiased font-sans transition-colors duration-200;
   }
 }
 
