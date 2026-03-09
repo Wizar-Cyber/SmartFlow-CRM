@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import { CurrentUser } from '../App';
 
 interface LoginProps {
-  onLogin: (token: string) => void;
+  onLogin: (token: string, user: CurrentUser) => void;
 }
 
 export default function Login({ onLogin }: LoginProps) {
@@ -26,7 +27,7 @@ export default function Login({ onLogin }: LoginProps) {
       const data = await response.json();
 
       if (response.ok) {
-        onLogin(data.token);
+        onLogin(data.token, data.user);
       } else {
         setError(data.error || 'Error al iniciar sesión');
       }
@@ -50,12 +51,11 @@ export default function Login({ onLogin }: LoginProps) {
         className="w-full max-w-md bg-navy-card border border-slate-800 rounded-3xl p-8 shadow-2xl relative z-10"
       >
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-primary/20">
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVQR5gsJaTnl8Ryaks0LYjt9ch1jaNn7Rm68h67Ig_0zYz164bXQSgz_KHDwy2K3UOe35jFlFPvb6EpxOptqHpvKUBTQNMBHntJguZe2A8aPXbZ4TPGREx3_1oACaS1ib-cfdYSxfQiTdqhFPYJTES_NZTYIKnS6wXDBSasshNVUOVMcPNLGOtNaZU_mecWr1kzfAqjISdZcynSzIz7ayrPSFw1w8-nBUhapUDrglgaQY62as9n-A6RoxYWs5cVMpYIFQiBNUNN3g" 
-              alt="SmartFlow Logo" 
+          <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-black/20">
+            <img
+              src="/LOgo.png"
+              alt="SmartFlow Logo"
               className="w-10 h-10 object-contain"
-              referrerPolicy="no-referrer"
             />
           </div>
           <h1 className="text-2xl font-bold text-white">SmartFlow</h1>

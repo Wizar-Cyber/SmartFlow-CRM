@@ -1,4 +1,5 @@
 import express from 'express';
+import { logActivity } from './activity';
 // import db from '../db';
 
 const router = express.Router();
@@ -28,6 +29,7 @@ router.post('/', async (req, res) => {
     //   [name, client_id, status, progress, deadline, budget]
     // );
     // res.status(201).json(result.rows[0]);
+    logActivity('admin@smartflow.com', 'CREATE', 'proyecto', `Proyecto creado: ${req.body.name || 'Sin nombre'}`);
     res.status(201).json({ id: Date.now(), ...req.body });
   } catch (error) {
     res.status(500).json({ error: 'Error al crear proyecto' });
@@ -44,6 +46,7 @@ router.put('/:id', async (req, res) => {
     //   [name, client_id, status, progress, deadline, budget, id]
     // );
     // res.json(result.rows[0]);
+    logActivity('admin@smartflow.com', 'UPDATE', 'proyecto', `Proyecto actualizado: ID ${id}`);
     res.json({ id, ...req.body });
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar proyecto' });
@@ -55,6 +58,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     // await db.query('DELETE FROM projects WHERE id = $1', [id]);
+    logActivity('admin@smartflow.com', 'DELETE', 'proyecto', `Proyecto eliminado: ID ${id}`);
     res.json({ message: 'Proyecto eliminado' });
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar proyecto' });

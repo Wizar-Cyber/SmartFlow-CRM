@@ -1,4 +1,5 @@
 import express from 'express';
+import { logActivity } from './activity';
 // import db from '../db'; // Descomentar cuando la DB esté lista
 
 const router = express.Router();
@@ -40,7 +41,9 @@ router.post('/', async (req, res) => {
     //   [name, company, email, phone, service, status]
     // );
     // res.status(201).json(result.rows[0]);
-    res.status(201).json({ id: Date.now(), ...req.body });
+    const newClient = { id: Date.now(), ...req.body };
+    logActivity('admin@smartflow.com', 'CREATE', 'cliente', `Cliente creado: ${req.body.name || 'Desconocido'}`);
+    res.status(201).json(newClient);
   } catch (error) {
     res.status(500).json({ error: 'Error al crear cliente' });
   }
@@ -56,6 +59,7 @@ router.put('/:id', async (req, res) => {
     //   [name, company, email, phone, service, status, id]
     // );
     // res.json(result.rows[0]);
+    logActivity('admin@smartflow.com', 'UPDATE', 'cliente', `Cliente actualizado: ID ${id}`);
     res.json({ id, ...req.body });
   } catch (error) {
     res.status(500).json({ error: 'Error al actualizar cliente' });
@@ -67,6 +71,7 @@ router.delete('/:id', async (req, res) => {
   try {
     const { id } = req.params;
     // await db.query('DELETE FROM clients WHERE id = $1', [id]);
+    logActivity('admin@smartflow.com', 'DELETE', 'cliente', `Cliente eliminado: ID ${id}`);
     res.json({ message: 'Cliente eliminado correctamente' });
   } catch (error) {
     res.status(500).json({ error: 'Error al eliminar cliente' });

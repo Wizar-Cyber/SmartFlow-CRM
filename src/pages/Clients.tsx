@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { exportToCSV } from '../utils/export';
 
 interface Client {
   id: number;
@@ -119,6 +120,17 @@ export default function Clients() {
     setEditingClient(null);
   };
 
+  const handleExport = () => {
+    exportToCSV(filteredClients, 'clientes', {
+      name: 'Nombre',
+      company: 'Empresa',
+      email: 'Email',
+      phone: 'Teléfono',
+      service: 'Servicio',
+      status: 'Estado',
+    });
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -126,13 +138,22 @@ export default function Clients() {
           <h2 className="text-3xl font-bold tracking-tight text-white">Clientes</h2>
           <p className="text-slate-500 mt-1">Gestione leads, realice seguimiento de contratos e historial de clientes activos.</p>
         </div>
-        <button 
-          onClick={() => openModal()}
-          className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20"
-        >
-          <span className="material-symbols-outlined">person_add</span>
-          <span>Nuevo Cliente</span>
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleExport}
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2.5 px-5 rounded-xl transition-all border border-slate-700 cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-base">download</span>
+            <span>Exportar CSV</span>
+          </button>
+          <button
+            onClick={() => openModal()}
+            className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20 cursor-pointer"
+          >
+            <span className="material-symbols-outlined">person_add</span>
+            <span>Nuevo Cliente</span>
+          </button>
+        </div>
       </div>
 
       <div className="bg-navy-card p-4 rounded-2xl shadow-sm border border-slate-800 flex flex-wrap items-center gap-4">

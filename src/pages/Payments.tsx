@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { exportToCSV } from '../utils/export';
 
 interface Payment {
   id: number;
@@ -135,6 +136,17 @@ export default function Payments() {
     setEditingPayment(null);
   };
 
+  const handleExport = () => {
+    exportToCSV(filteredPayments, 'pagos', {
+      client_name: 'Cliente',
+      service: 'Servicio',
+      amount: 'Monto',
+      status: 'Estado',
+      method: 'Método',
+      payment_date: 'Fecha',
+    });
+  };
+
   const totalIncome = payments.filter(p => p.status === 'Pagado').reduce((acc, p) => acc + p.amount, 0);
   const pendingAmount = payments.filter(p => p.status === 'Pendiente').reduce((acc, p) => acc + p.amount, 0);
 
@@ -145,13 +157,22 @@ export default function Payments() {
           <h3 className="text-3xl font-black tracking-tight text-white">Panel Financiero</h3>
           <p className="text-slate-500 mt-1">Monitorea el flujo de caja y estados de facturación en tiempo real.</p>
         </div>
-        <button 
-          onClick={() => openModal()}
-          className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20"
-        >
-          <span className="material-symbols-outlined">add_card</span>
-          <span>Registrar Pago</span>
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleExport}
+            className="inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-2.5 px-5 rounded-xl transition-all border border-slate-700 cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-base">download</span>
+            <span>Exportar CSV</span>
+          </button>
+          <button
+            onClick={() => openModal()}
+            className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-xl transition-all shadow-lg shadow-primary/20 cursor-pointer"
+          >
+            <span className="material-symbols-outlined">add_card</span>
+            <span>Registrar Pago</span>
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

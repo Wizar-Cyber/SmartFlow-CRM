@@ -12,6 +12,9 @@ import securityRoutes from "./server/routes/security";
 import teamRoutes from "./server/routes/team";
 import contractRoutes from "./server/routes/contracts";
 import paymentRoutes from "./server/routes/payments";
+import activityRoutes from "./server/routes/activity";
+import searchRoutes from "./server/routes/search";
+import emailRoutes from "./server/routes/email";
 
 dotenv.config();
 
@@ -37,6 +40,9 @@ async function startServer() {
   app.use("/api/team", teamRoutes);
   app.use("/api/contracts", contractRoutes);
   app.use("/api/payments", paymentRoutes);
+  app.use("/api/activity", activityRoutes);
+  app.use("/api/search", searchRoutes);
+  app.use("/api/email", emailRoutes);
 
   // Vite middleware for development
   if (process.env.NODE_ENV !== "production") {

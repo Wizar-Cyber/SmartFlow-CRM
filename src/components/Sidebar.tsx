@@ -14,6 +14,7 @@ const navItems: { id: Page; label: string; icon: string }[] = [
   { id: 'projects', label: 'Proyectos', icon: 'work' },
   { id: 'contracts', label: 'Contratos', icon: 'description' },
   { id: 'payments', label: 'Pagos', icon: 'payments' },
+  { id: 'calendar', label: 'Calendario', icon: 'calendar_month' },
   { id: 'documentation', label: 'Documentación', icon: 'folder' },
   { id: 'settings', label: 'Configuración', icon: 'settings' },
 ];
@@ -33,12 +34,11 @@ export default function Sidebar({ activePage, onPageChange, isCollapsed, onToggl
 
       <div className={`p-6 flex items-center ${isCollapsed ? 'justify-center' : 'justify-start'} overflow-hidden`}>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-primary rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVQR5gsJaTnl8Ryaks0LYjt9ch1jaNn7Rm68h67Ig_0zYz164bXQSgz_KHDwy2K3UOe35jFlFPvb6EpxOptqHpvKUBTQNMBHntJguZe2A8aPXbZ4TPGREx3_1oACaS1ib-cfdYSxfQiTdqhFPYJTES_NZTYIKnS6wXDBSasshNVUOVMcPNLGOtNaZU_mecWr1kzfAqjISdZcynSzIz7ayrPSFw1w8-nBUhapUDrglgaQY62as9n-A6RoxYWs5cVMpYIFQiBNUNN3g" 
-              alt="SmartFlow Logo" 
+          <div className="w-10 h-10 bg-white rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+            <img
+              src="/LOgo.png"
+              alt="SmartFlow Logo"
               className="w-full h-full object-contain p-1"
-              referrerPolicy="no-referrer"
             />
           </div>
           {!isCollapsed && (
@@ -70,12 +70,9 @@ export default function Sidebar({ activePage, onPageChange, isCollapsed, onToggl
 
       <div className="p-4 border-t border-white/10 overflow-hidden">
         <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3 p-2 bg-white/5 rounded-xl border border-white/10'}`}>
-          <img 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuATz5mYfGQV6eA9fc7Ycq6EmjoKx3ty7MLyoACSOCZfWgVOyLWASATgCAOSYOlka2mDd0x8-P-ZNqfYb2ZkbrXG_fmCGHQIQJU1Q8-z9RH76E9h5ka0L2nnNU4hS_os10lGQ3fsPQ5GU3yYguzfb2S9uTt7Fp1aUMU38f_A3UGiwVAcyoC1Fj4eqpZn3K_DTywTyep_cglyHuReo4xREr-WxueVdrpS8YJrg1zIADGSllQ623FQLCdjP58pbZEVsjamiLAd7fwC53c" 
-            alt="Admin Profile" 
-            className="w-10 h-10 rounded-full border-2 border-slate-700 flex-shrink-0"
-            referrerPolicy="no-referrer"
-          />
+          <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary/30 flex-shrink-0 flex items-center justify-center">
+            <span className="text-primary font-bold text-sm">A</span>
+          </div>
           {!isCollapsed && (
             <>
               <div className="overflow-hidden whitespace-nowrap">

@@ -5,8 +5,9 @@ import SecuritySettings from '../components/settings/SecuritySettings';
 import BillingSettings from '../components/settings/BillingSettings';
 import IntegrationsSettings from '../components/settings/IntegrationsSettings';
 import TeamSettings from '../components/settings/TeamSettings';
+import ActivityLogs from '../components/settings/ActivityLogs';
 
-type SettingsTab = 'profile' | 'notifications' | 'security' | 'billing' | 'integrations' | 'team';
+type SettingsTab = 'profile' | 'notifications' | 'security' | 'billing' | 'integrations' | 'team' | 'activity';
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState<SettingsTab>('profile');
@@ -15,6 +16,7 @@ export default function Settings() {
     { id: 'profile', label: 'Perfil', icon: 'person' },
     { id: 'notifications', label: 'Notificaciones', icon: 'notifications' },
     { id: 'security', label: 'Seguridad', icon: 'security' },
+    { id: 'activity', label: 'Actividad', icon: 'history' },
     { id: 'billing', label: 'Facturación', icon: 'payments' },
     { id: 'integrations', label: 'Integraciones', icon: 'extension' },
     { id: 'team', label: 'Equipo', icon: 'group' },
@@ -25,6 +27,7 @@ export default function Settings() {
       case 'profile': return <ProfileSettings />;
       case 'notifications': return <NotificationsSettings />;
       case 'security': return <SecuritySettings />;
+      case 'activity': return <ActivityLogs />;
       case 'billing': return <BillingSettings />;
       case 'integrations': return <IntegrationsSettings />;
       case 'team': return <TeamSettings />;
@@ -43,12 +46,12 @@ export default function Settings() {
         <div className="md:col-span-1">
           <nav className="space-y-1 sticky top-8">
             {tabs.map((tab) => (
-              <button 
-                key={tab.id} 
+              <button
+                key={tab.id}
                 onClick={() => setActiveTab(tab.id as SettingsTab)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all ${
-                  activeTab === tab.id 
-                    ? 'bg-primary text-navy-dark shadow-lg shadow-primary/20' 
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'bg-primary text-navy-dark shadow-lg shadow-primary/20'
                     : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                 }`}
               >
