@@ -130,17 +130,6 @@ Vite dev server proxies `/api/*` requests to the Express backend.
 
 ---
 
-## Default Credentials
-
-| Field | Value |
-|-------|-------|
-| Email | `admin@smartflow.com` |
-| Password | `admin123` |
-
-> Change these before any production deployment.
-
----
-
 ## API Endpoints
 
 | Method | Route | Description |
