@@ -76,7 +76,7 @@ export default function Sidebar({ activePage, onPageChange, isCollapsed, onToggl
           {!isCollapsed && (
             <>
               <div className="overflow-hidden whitespace-nowrap">
-                <p className="text-sm font-semibold text-white truncate">Alex Henderson</p>
+                <p className="text-sm font-semibold text-white truncate">Reiber Lozano</p>
                 <p className="text-xs text-slate-400 truncate">Admin del Sistema</p>
               </div>
               <button 

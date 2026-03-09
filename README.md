@@ -160,22 +160,6 @@ Vite dev server proxies `/api/*` requests to the Express backend.
 - API routes do not yet enforce JWT authentication. The middleware exists at `server/middleware/auth.ts` and is ready to be applied.
 - Frontend `fetch()` calls do not yet send the `Authorization: Bearer` header.
 
----
-
-## Roadmap
-
-- [ ] Connect PostgreSQL database
-- [ ] Apply `authenticateToken` middleware to all data routes
-- [ ] Add `Authorization` header to all frontend fetch calls
-- [ ] React Router for URL-based navigation
-- [ ] Mobile-responsive navigation menu
-- [ ] Toast notifications for CRUD feedback
-- [ ] File upload for contracts and documentation
-- [ ] Real password change + 2FA in Security settings
-- [ ] Stripe integration for billing
-
----
-
 ## License
 
 MIT

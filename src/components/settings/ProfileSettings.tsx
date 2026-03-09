@@ -8,7 +8,7 @@ export default function ProfileSettings() {
         <div className="space-y-4">
           <div className="flex items-center gap-6 mb-8">
             <img 
-              src="https://lh3.googleusercontent.com/a/ACg8ocL_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X_X=s96-c" 
+              src="/LOgo.png" 
               alt="Avatar" 
               className="w-20 h-20 rounded-2xl border-2 border-primary shadow-lg shadow-primary/20"
               referrerPolicy="no-referrer"
